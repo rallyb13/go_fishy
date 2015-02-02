@@ -15,6 +15,6 @@ class Card < ActiveRecord::Base
     where({:dealt => false})
   end)
 
-  # default_scope {order('random()')}
+  default_scope {order('random()')}
 
 end
