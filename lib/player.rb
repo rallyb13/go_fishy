@@ -8,7 +8,7 @@ class Player < ActiveRecord::Base
     dupe_cards = hand.select{|card| hand.count("fish") == 2 }
     self.score += dupe_cards.length / 2
     dupe_cards.each do |card|
-      # get_card(1)
+      get_card(1)
       self.cards.delete(card)
     end
   end

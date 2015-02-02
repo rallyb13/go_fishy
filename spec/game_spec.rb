@@ -7,6 +7,7 @@ describe(Game) do
   describe("#start") do
     it("will deal cards to players") do
       game1 = Game.create()
+      Card.add_cards
       player1 = Player.create()
       player2 = Player.create()
       game1.start()
@@ -28,6 +29,7 @@ describe(Game) do
   describe("#update_turn") do
     it("will update the db with the correct turn") do
       game1 = Game.create()
+      Card.add_cards
       player1 = Player.create()
       player2 = Player.create()
       game1.start()

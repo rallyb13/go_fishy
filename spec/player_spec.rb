@@ -7,8 +7,8 @@ describe(Player) do
   describe "#check_doubles" do
     it "will check a players hand for pairs" do
       player1 = Player.create(score: 0)
-      card1 = Card.create(fish: "swordfish")
-      card2 = Card.create(fish: "swordfish")
+      card1 = Card.create(fish: "swordfish", :dealt => false)
+      card2 = Card.create(fish: "swordfish", :dealt => false)
       player1.cards << card1
       player1.cards << card2
       player1.check_doubles

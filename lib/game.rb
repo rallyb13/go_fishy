@@ -6,7 +6,7 @@ class Game < ActiveRecord::Base
     @players = Player.all
     @total_points = Card.all.length / 2
     @players.each do |player|
-      # player.get_cards(5)
+      player.get_card(5)
     end
     update(:player_id => @players.first.id)
   end
