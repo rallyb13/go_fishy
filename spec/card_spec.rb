@@ -20,6 +20,7 @@ describe Card do
     card3 = Card.create(fish: "dogfish", dealt: false)
     card4 = Card.create(fish: "catfish", dealt: false)
     card5 = Card.create(fish: "shrimp", dealt: false)
-    expect(Card.all()).to eq([card1, card2, card3, card4, card5])
+    card_array = [card1, card2, card3, card4, card5]
+    expect(Card.all() == card_array).to eq(false)
   end
 end
