@@ -17,10 +17,11 @@ describe(Game) do
   describe("#gameover?") do
     it("will check if the game is over") do
       game1 = Game.create()
-      player1 = Player.create()
-      player2 = Player.create()
+      player1 = Player.create(score: 0)
+      player2 = Player.create(score: 11)
+      Card.add_cards
       game1.start()
-      expect(game1.gameover?).to eq(false)
+      expect(game1.gameover?).to eq(true)
     end
   end
 
