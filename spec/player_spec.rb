@@ -9,11 +9,30 @@ describe(Player) do
       player1 = Player.create(score: 0)
       card1 = Card.create(fish: "swordfish", :dealt => false)
       card2 = Card.create(fish: "swordfish", :dealt => false)
+      card3 = Card.create(fish: "mikefish", :dealt => false)
       player1.cards << card1
       player1.cards << card2
+      player1.cards << card3
       player1.check_doubles
-      expect(player1.cards).to eq([])
+      expect(player1.cards).to eq([card3])
     end
+
+  #   it "will check a players hand for both pairs" do
+  #     player1 = Player.create(score: 0)
+  #     card1 = Card.create(fish: "swordfish", :dealt => false)
+  #     card2 = Card.create(fish: "swordfish", :dealt => false)
+  #     card3 = Card.create(fish: "mikefish", :dealt => false)
+  #     card4 = Card.create(fish: "mikefish", :dealt => false)
+  #     card5 = Card.create(fish: "benjaminfish", :dealt => false)
+  #     player1.cards << card1
+  #     player1.cards << card2
+  #     player1.cards << card3
+  #     player1.cards << card4
+  #     player1.cards << card5
+  #     player1.check_doubles
+  #     player1.check_doubles
+  #     expect(player1.cards).to eq([card5])
+  #   end
   end
 
   describe('#get_card') do
