@@ -26,6 +26,8 @@ class Player < ActiveRecord::Base
       if card.fish == my_card
         self.cards.push(card)
         opponent.cards.delete(card)
+      else
+
       end
     end
   end

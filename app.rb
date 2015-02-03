@@ -40,7 +40,7 @@ post "/ask" do
 end
 
 
-get "/update_turn" do
+post "/update_turn" do
   update_turn
   @game = Game.first
   erb :score

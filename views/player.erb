@@ -18,14 +18,14 @@
         <option value="<%= player.id %>">Player <%= player.id %></option>
       <% end %>
     <% end %>
-  </select>
+  </select><br>
   <button type="submit" class="btn">Ask Opponent for a Card</button>
 </form>
-
+<br><br>
 <form action="/check_doubles" method="post">
   <button type="submit" class="btn">Pair!</button>
 </form>
-
+<br><br>
 
 <form action="/update_turn" method="post">
   <button type="submit" class="btn">Finish Turn</button>
