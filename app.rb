@@ -9,9 +9,6 @@ end
 
 post "/game" do
   num_players = params.fetch('num_players').to_i
-  if num_players < 1 || num_player > 2
-    num_players = 2
-  end
   @game = Game.create
   num_players.times {@game.players.create}
   @game.start

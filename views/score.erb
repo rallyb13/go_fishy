@@ -1,3 +1,5 @@
 <% @game.players.each do |playa| %>
   <p>Player <%= playa.id %> score: <%= playa.score %></p>
 <% end %>
+
+<a href="/player/<%= @game.player_id %>"><button name="button" class="btn btn-sm btn-success">Player <%= @game.player_id %> Go!</button></a>
