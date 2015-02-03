@@ -48,11 +48,13 @@ ul {
 .form-control {
   float: left;
   margin-right: 20px;
+  margin-top: 20px;
 }
 
 .btn {
   display: inline;
   float: left;
+  margin-top: 20px;
 }
 
 

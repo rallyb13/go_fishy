@@ -27,8 +27,8 @@ describe(Game) do
   describe("#update_turn") do
     it("will update the db with the correct turn") do
       game1 = Game.create()
-      player1 = Player.create()
-      player2 = Player.create()
+      player1 = Player.create(player_num: 1)
+      player2 = Player.create(player_num: 2)
       game1.start()
       game1.update_turn()
       expect(game1.player_id).to eq(player2.id)

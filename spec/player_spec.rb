@@ -3,6 +3,7 @@ require('spec_helper')
 describe(Player) do
   it {should have_and_belong_to_many :cards}
   it {should belong_to :game}
+  it {should validate_presence_of :name}
 
   describe "#check_doubles" do
     it "will check a players hand for pairs" do
