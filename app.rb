@@ -9,11 +9,9 @@ end
 
 post "/game" do
   num_players = params.fetch('num_players').to_i
-  if num_players < 1 || num_player > 2
-    num_players = 2
-  end
   @game = Game.create
-  num_players.times {@game.players.create}
+  num_players.times {@game.players.create(score: 0)}
+binding.pry
   @game.start
   erb(:score)
 end
@@ -35,9 +33,9 @@ end
 post "/ask" do
   game = Game.first
   player = Player.find(game.player_id)
-  opp = params['opponent']
+  opp = Player.find(params['opponent'])
   fish = params['card']
-  ask_for(opp, fish)
+  player.ask_for(opp, fish)
 
   redirect back
 end

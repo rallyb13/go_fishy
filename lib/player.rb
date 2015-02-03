@@ -13,8 +13,6 @@ class Player < ActiveRecord::Base
     end
   end
 
-
-
   def get_card (number)
     number.times do
       card = Card.not_dealt.take
