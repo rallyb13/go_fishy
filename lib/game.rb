@@ -4,6 +4,7 @@ class Game < ActiveRecord::Base
 
   def start
     @players = Player.all
+    Card.add_cards
     @total_points = Card.all.length / 2
     @players.each do |player|
       player.get_card(5)
@@ -23,7 +24,7 @@ class Game < ActiveRecord::Base
     end
   end
 
-  def update_turn()
+  def update_turn
     next_player_id = self.player_id + 1
     if next_player_id > @players.last.id
       next_player_id = @players.first.id

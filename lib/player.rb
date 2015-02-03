@@ -23,8 +23,4 @@ class Player < ActiveRecord::Base
     end
   end
 
-  # def ask_for (opponent, my_card)
-  #   opponent.cards.fish == my_card
-  # end
-
 end
