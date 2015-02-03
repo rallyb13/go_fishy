@@ -53,7 +53,11 @@ post "/ask" do
   else
     @fail = true
   end
-  
+
+  if @player.cards == 0
+    @fail = true
+  end
+
   erb(:player)
   end
 
