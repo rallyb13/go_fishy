@@ -8,12 +8,15 @@ class Card < ActiveRecord::Base
       fishes.each do |fish|
         Card.create({:fish => fish, :dealt => false})
       end
+
     end
   end
 
   scope(:not_dealt, -> do
     where({:dealt => false})
   end)
+
+  scope(:alphabetize, -> { order(:fish) })
 
   # default_scope {order('random()')}
 
