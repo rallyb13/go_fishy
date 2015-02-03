@@ -29,9 +29,11 @@ class Player < ActiveRecord::Base
 
   def get_card (number)
     number.times do
-      card = Card.not_dealt.order("RANDOM()").first
-      card.update(dealt: true)
-      self.cards.push(card)
+      if Card.not_dealt.any?
+        card = Card.not_dealt.order("RANDOM()").first
+        card.update(dealt: true)
+        self.cards.push(card)
+      end
     end
   end
 

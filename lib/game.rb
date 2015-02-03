@@ -12,15 +12,15 @@ class Game < ActiveRecord::Base
     update(:player_id => @players.first.id)
   end
 
-  def gameover?
+  def gameover
     total_score = 0
-    @players.each do |player|
+    Player.all.each do |player|
       total_score += player.score
     end
     if total_score == @total_points
-      true
+      return true
     else
-      false
+      return false
     end
   end
 
@@ -31,6 +31,11 @@ class Game < ActiveRecord::Base
     end
     next_player_id = (Player.find_by(player_num: next_player_num)).id
     update(player_id: next_player_id)
+  end
+
+  def winner
+    players = Player.all.reorder(score: :desc)
+    players.first
   end
 
 end
