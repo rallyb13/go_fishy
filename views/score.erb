@@ -3,7 +3,7 @@
   <p><%= playa.name %>: <%= playa.score %></p>
 <% end %>
 
-<% if @game.gameover? %>
+<% if @game.gameover %>
   <h2><%= @game.winner.name %> is the winner!</h2>
 <% end %>
 

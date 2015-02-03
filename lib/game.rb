@@ -12,15 +12,15 @@ class Game < ActiveRecord::Base
     update(:player_id => @players.first.id)
   end
 
-  def gameover?
+  def gameover
     total_score = 0
     Player.all.each do |player|
       total_score += player.score
     end
     if total_score == @total_points
-      true
+      return true
     else
-      false
+      return false
     end
   end
 
