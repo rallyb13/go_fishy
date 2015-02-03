@@ -8,9 +8,11 @@ get "/" do
 end
 
 post "/game" do
-  num_players = params.fetch('num_players').to_i
   @game = Game.create
-  num_players.times {@game.players.create(score: 0)}
+  @game.players.create(name: params['name1'], player_num: 1)
+  @game.players.create(name: params['name2'], player_num: 2)
+  @game.players.create(name: params['name3'], player_num: 3)
+  @game.players.create(name: params['name4'], player_num: 4)
   @game.start
   erb(:score)
 end
