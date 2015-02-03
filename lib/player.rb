@@ -23,4 +23,13 @@ class Player < ActiveRecord::Base
     end
   end
 
+  def ask_for (opponent, my_card)
+    opponent.cards.each() do |card|
+      if card.fish == my_card
+        self.cards.push(card)
+        opponent.cards.delete(card)
+      end
+    end
+  end
+
 end
