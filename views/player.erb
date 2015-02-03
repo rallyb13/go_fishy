@@ -1,12 +1,32 @@
- <!--
+<h2>Player <%= @player.id %>'s Turn!</h2>
 
- list out player cards
- forms :
-- button: discard doubles and draw
-form action = "/check_doubles"
-- ask?
-- finish turn
-form action = "/update_turn"
+ <ul>
+   <% @player.cards.each do |card| %>
+    <li><%= card.fish %></li>
+   <% end %>
+ </ul>
+
+<form action="/ask" method="post">
+  <select name="card">
+    <% @player.cards.each do |card| %>
+      <option value="<%= card.fish %>"><%= card.fish %></option>
+    <% end %>
+  </select>
+  <select name="opponent">
+    <% @game.players.each do |player| %>
+      <% if player != @player %>
+        <option value="<%= player.id %>">Player <%= player.id %></option>
+      <% end %>
+    <% end %>
+  </select>
+  <button type="submit" class="btn">Ask Opponent for a Card</button>
+</form>
+
+<form action="/check_doubles" method="post">
+  <button type="submit" class="btn">Pair!</button>
+</form>
 
 
- -->
+<form action="/update_turn" method="post">
+  <button type="submit" class="btn">Finish Turn</button>
+</form>

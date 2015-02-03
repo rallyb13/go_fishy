@@ -20,7 +20,7 @@ end
 
 get "/player/:player_id" do
   @player = Player.find(params["player_id"])
-
+  @game = Game.first
   erb(:player)
 end
 
@@ -35,8 +35,8 @@ end
 post "/ask" do
   game = Game.first
   player = Player.find(game.player_id)
-  opp = params['opp']
-  fish = params['fish']
+  opp = params['opponent']
+  fish = params['card']
   ask_for(opp, fish)
 
   redirect back
