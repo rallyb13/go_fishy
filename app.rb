@@ -9,16 +9,24 @@ end
 
 post "/game" do
   @game = Game.create
-  @game.players.create(name: params['name1'], player_num: 1)
-  @game.players.create(name: params['name2'], player_num: 2)
-  @game.players.create(name: params['name3'], player_num: 3)
-  @game.players.create(name: params['name4'], player_num: 4)
+  if params['name1'] != ""
+    @game.players.create(name: params['name1'], player_num: 1, score: 0)
+  end
+  if params['name2'] != ""
+    @game.players.create(name: params['name2'], player_num: 2, score: 0)
+  end
+  if params['name3'] != ""
+    @game.players.create(name: params['name3'], player_num: 3, score: 0)
+  end
+  if params['name4'] != ""
+    @game.players.create(name: params['name4'], player_num: 4, score: 0)
+  end
   @game.start
   erb(:score)
 end
 
-get "/player/:player_id" do
-  @player = Player.find(params["player_id"])
+get "/player/:player_num" do
+  @player = Player.find_by(player_num: params["player_num"])
   @game = Game.first
   erb(:player)
 end

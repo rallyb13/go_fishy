@@ -4,6 +4,9 @@ class Player < ActiveRecord::Base
   belongs_to :game
   validates_presence_of :name
 
+  default_scope {order('player_num')}
+
+
   def check_doubles
     hand = self.cards
     dupe_cards = hand.select{|card| hand.count("fish") == 2 }

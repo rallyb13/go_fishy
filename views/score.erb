@@ -1,5 +1,6 @@
+<% next_player = Player.find(@game.player_id) %>
 <% @game.players.each do |playa| %>
-  <p>Player <%= playa.id %> score: <%= playa.score %></p>
+  <p><%= playa.name %>: <%= playa.score %></p>
 <% end %>
 
-<a href="/player/<%= @game.player_id %>"><button name="button" class="btn btn-sm btn-success">Player <%= @game.player_id %> Go!</button></a>
+<a href="/player/<%= next_player.player_num %>"><button name="button" class="btn btn-sm btn-success"><%= next_player.name %> Go!</button></a>
