@@ -1,7 +1,8 @@
 <h2> <%= @player.name %>'s Turn!</h2>
 
 <% if @success %>
-  You got a card! Match your pair!
+  You got a card! Click below to add your pair to your score, then ask again!
+
 <% end %>
 
 <% if @fail %>
@@ -39,7 +40,3 @@
   <button type="submit" class="btn">Pair!</button>
 </form>
 <br><br>
-
-<form action="/update_turn" method="post">
-  <button type="submit" class="btn">Finish Turn</button>
-</form>

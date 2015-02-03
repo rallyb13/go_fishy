@@ -28,6 +28,9 @@ end
 get "/player/:player_num" do
   @player = Player.find_by(player_num: params["player_num"])
   @game = Game.first
+  if @player.cards.length == 0
+    @fail = true
+  end
   erb(:player)
 end
 
@@ -54,12 +57,8 @@ post "/ask" do
     @fail = true
   end
 
-  if @player.cards == 0
-    @fail = true
-  end
-
   erb(:player)
-  end
+end
 
 post "/go_fish" do
   game = Game.first
@@ -71,12 +70,6 @@ post "/go_fish" do
   erb(:score)
 end
 
-#
-# post "/update_turn" do
-#   @game = Game.first
-#   @game.update_turn
-#   erb :score
-# end
 
 get "/reset" do
   Card.all().each() do |x|
