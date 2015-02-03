@@ -34,9 +34,10 @@ end
 post "/check_doubles" do
   game = Game.first
   player = Player.find(game.player_id)
+  num = player.player_num
   player.check_doubles
 
-  redirect back
+  redirect("/player/#{num}")
 end
 
 post "/ask" do
@@ -52,7 +53,7 @@ post "/ask" do
   else
     @fail = true
   end
-
+  
   erb(:player)
   end
 
@@ -61,16 +62,17 @@ post "/go_fish" do
   player = Player.find(game.player_id)
   num = player.player_num
   player.get_card(1)
-
-  redirect("/player/#{num}")
-end
-
-
-post "/update_turn" do
   @game = Game.first
   @game.update_turn
-  erb :score
+  erb(:score)
 end
+
+#
+# post "/update_turn" do
+#   @game = Game.first
+#   @game.update_turn
+#   erb :score
+# end
 
 get "/reset" do
   Card.all().each() do |x|

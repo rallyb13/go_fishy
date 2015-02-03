@@ -14,7 +14,10 @@ class Player < ActiveRecord::Base
       fishes << card.fish
     end
     detected = fishes.detect{|fish| fishes.count(fish) == 2}
-    self.score += 1
+    if detected
+      new_score = self.score + 1
+      self.update(score: new_score)
+    end
     self.cards.each do |card|
       if card.fish == detected
         hand.delete(card)
