@@ -23,4 +23,13 @@ describe Card do
     card_array = [card1, card2, card3, card4, card5]
     expect(Card.all() == card_array).to eq(false)
   end
+
+  describe('#alphabetize') do
+    it('will alphabetize the cards') do
+      card1 = Card.create(fish: "veggiefish", dealt: false)
+      card2 = Card.create(fish: "fruitfish", dealt: false)
+      cards = [card1, card2]
+      expect(Card.all.alphabetize).to eq([card2, card1])
+    end
+  end
 end

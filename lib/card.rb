@@ -8,6 +8,7 @@ class Card < ActiveRecord::Base
       fishes.each do |fish|
         Card.create({:fish => fish, :dealt => false})
       end
+
     end
   end
 
@@ -15,6 +16,8 @@ class Card < ActiveRecord::Base
     where({:dealt => false})
   end)
 
-  default_scope {order('random()')}
+  scope(:alphabetize, -> { order(:fish) })
+
+  # default_scope {order('random()')}
 
 end

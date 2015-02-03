@@ -11,7 +11,6 @@ post "/game" do
   num_players = params.fetch('num_players').to_i
   @game = Game.create
   num_players.times {@game.players.create(score: 0)}
-binding.pry
   @game.start
   erb(:score)
 end
