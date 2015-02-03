@@ -67,8 +67,8 @@ end
 
 
 post "/update_turn" do
-  update_turn
   @game = Game.first
+  @game.update_turn
   erb :score
 end
 
@@ -82,5 +82,5 @@ get "/reset" do
   Game.all().each() do |x|
     x.destroy()
   end
-  redirect "/"
+  erb(:oil_spill)
 end

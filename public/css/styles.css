@@ -9,6 +9,14 @@ header {
   text-align: center;
 }
 
+footer {
+  height: auto;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px dashed #BFA6CC;
+  text-align: right;
+}
+
 h1 {
   text-align: center;
   font-family: 'Merriweather', serif;
@@ -51,11 +59,31 @@ ul {
   margin-top: 20px;
 }
 
-.btn {
+.oil_spill {
+  width: 100%;
+  height: 10px;
+  background: black;
+  -webkit-animation: oil_spill 10s;
+  animation: oil_spill 10s;
+}
+
+
+@-webkit-keyframes oil_spill {
+  from {height: 10px;}
+  to {height: 80px;}
+}
+
+keyframes oil_spill {
+  from {height: 10px;}
+  to {height: 80px;}
+}
+
+
+/*.btn {
   display: inline;
   float: left;
   margin-top: 20px;
-}
+}*/
 
 
 /*input, .form-control {

@@ -26,7 +26,7 @@ class Game < ActiveRecord::Base
 
   def update_turn
     next_player_num = Player.find(self.player_id).player_num + 1
-    if next_player_num > @players.length
+    if next_player_num > Player.all.length
       next_player_num = 1
     end
     next_player_id = (Player.find_by(player_num: next_player_num)).id
