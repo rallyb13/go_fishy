@@ -9,12 +9,19 @@ class Player < ActiveRecord::Base
 
   def check_doubles
     hand = self.cards
-    dupe_cards = hand.select{|card| hand.count("fish") == 2 }
-    self.score += dupe_cards.length / 2
-    dupe_cards.each do |card|
-      get_card(1)
-      self.cards.delete(card)
+    fishes = []
+    hand.each do |card|
+      fishes << card.fish
     end
+    detected = fishes.detect{|fish| fishes.count(fish) == 2}
+    self.score += 1
+    self.cards.each do |card|
+      if card.fish == detected
+        hand.delete(card)
+      end
+    end
+    # self.cards.where(fish: detected).delete
+    # get_card(1)
   end
 
   def get_card (number)

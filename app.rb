@@ -47,7 +47,7 @@ post "/ask" do
   fish = params['card']
   player.ask_for(opp, fish)
   if player.cards.length == original_cards
-    
+
   end
 
 
