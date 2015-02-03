@@ -1,4 +1,4 @@
-<h2>Player <%= @player.id %>'s Turn!</h2>
+<h2> <%= @player.name %>'s Turn!</h2>
 
  <ul>
    <% @player.cards.alphabetize.each do |card| %>
@@ -15,7 +15,7 @@
   <select name="opponent">
     <% @game.players.each do |player| %>
       <% if player != @player %>
-        <option value="<%= player.id %>">Player <%= player.id %></option>
+        <option value="<%= player.id %>">Player <%= player.name %></option>
       <% end %>
     <% end %>
   </select><br>

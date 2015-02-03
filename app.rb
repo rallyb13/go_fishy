@@ -34,9 +34,14 @@ end
 post "/ask" do
   game = Game.first
   player = Player.find(game.player_id)
+  original_cards = player.cards.length
   opp = Player.find(params['opponent'])
   fish = params['card']
   player.ask_for(opp, fish)
+  if player.cards.length == original_cards
+    
+  end
+
 
   redirect back
 end
