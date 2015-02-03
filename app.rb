@@ -9,10 +9,10 @@ end
 
 post "/game" do
   @game = Game.create
-  @game.players.create(params['name1'])
-  @game.players.create(params['name2'])
-  @game.players.create(params['name3'])
-  @game.players.create(params['name4'])
+  @game.players.create(name: params['name1'], player_num: 1)
+  @game.players.create(name: params['name2'], player_num: 2)
+  @game.players.create(name: params['name3'], player_num: 3)
+  @game.players.create(name: params['name4'], player_num: 4)
   @game.start
   erb(:score)
 end
