@@ -40,18 +40,29 @@ post "/check_doubles" do
 end
 
 post "/ask" do
-  game = Game.first
-  player = Player.find(game.player_id)
-  original_cards = player.cards.length
+  @game = Game.first
+  @player = Player.find(@game.player_id)
+  original_cards = @player.cards.length
   opp = Player.find(params['opponent'])
   fish = params['card']
-  player.ask_for(opp, fish)
-  if player.cards.length == original_cards
-
+  @player.ask_for(opp, fish)
+  new_cards = @player.cards.length
+  if new_cards > original_cards
+    @success = true
+  else
+    @fail = true
   end
 
+  erb(:player)
+  end
 
-  redirect back
+post "/go_fish" do
+  game = Game.first
+  player = Player.find(game.player_id)
+  num = player.player_num
+  player.get_card(1)
+
+  redirect("/player/#{num}")
 end
 
 

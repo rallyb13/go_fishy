@@ -1,5 +1,18 @@
 <h2> <%= @player.name %>'s Turn!</h2>
 
+<% if @success %>
+  You got a card! Match your pair!
+<% end %>
+
+<% if @fail %>
+
+    No luck. <form action="/go_fish" method="post">
+      <button type="submit" class="btn btn-info">GO FISH!</button>
+    <br /><br /><br />
+    </form>
+
+<% end %>
+
  <ul>
    <% @player.cards.alphabetize.each do |card| %>
     <li><%= card.fish %></li>
@@ -8,7 +21,7 @@
 
 <form action="/ask" method="post">
   <select name="card">
-    <% @player.cards.each do |card| %>
+    <% @player.cards.alphabetize.each do |card| %>
       <option value="<%= card.fish %>"><%= card.fish %></option>
     <% end %>
   </select>
