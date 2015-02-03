@@ -12,6 +12,24 @@
     <br /><br /><br />
     </form>
 
+<% else %>
+
+  <form action="/ask" method="post">
+    <select name="card">
+      <% @player.cards.alphabetize.each do |card| %>
+        <option value="<%= card.fish %>"><%= card.fish %></option>
+      <% end %>
+    </select>
+    <select name="opponent">
+      <% @game.players.each do |player| %>
+        <% if player != @player %>
+          <option value="<%= player.id %>">Player <%= player.name %></option>
+        <% end %>
+      <% end %>
+    </select><br>
+    <button type="submit" class="btn">Ask Opponent for a Card</button>
+  </form>
+
 <% end %>
 
  <ul>
@@ -20,21 +38,6 @@
    <% end %>
  </ul>
 
-<form action="/ask" method="post">
-  <select name="card">
-    <% @player.cards.alphabetize.each do |card| %>
-      <option value="<%= card.fish %>"><%= card.fish %></option>
-    <% end %>
-  </select>
-  <select name="opponent">
-    <% @game.players.each do |player| %>
-      <% if player != @player %>
-        <option value="<%= player.id %>">Player <%= player.name %></option>
-      <% end %>
-    <% end %>
-  </select><br>
-  <button type="submit" class="btn">Ask Opponent for a Card</button>
-</form>
 <br><br>
 <form action="/check_doubles" method="post">
   <button type="submit" class="btn">Pair!</button>
