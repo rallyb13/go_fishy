@@ -46,3 +46,16 @@ get "/update_turn" do
   @game = Game.first
   erb :score
 end
+
+get "/reset" do
+  Card.all().each() do |x|
+    x.destroy()
+  end
+  Player.all().each() do |x|
+    x.destroy()
+  end
+  Game.all().each() do |x|
+    x.destroy()
+  end
+  redirect "/"
+end
