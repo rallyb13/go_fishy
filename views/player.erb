@@ -1,5 +1,9 @@
 <h2> <%= @player.name %>'s Turn!</h2>
 
+<form action="/check_doubles" method="post">
+  <button type="submit" class="btn">Pair!</button>
+</form>
+<br><br>
 <% if @success %>
   You got a card! Click below to add your pair to your score, then ask again!
 
@@ -32,14 +36,12 @@
 
 <% end %>
 
- <ul>
-   <% @player.cards.alphabetize.each do |card| %>
-    <li><%= card.fish %></li>
-   <% end %>
- </ul>
+<div class="cards">
+  <ul>
+     <% @player.cards.alphabetize.each do |card| %>
+        <li><%= card.fish %> <br> <img src="/img/<%= card.fish %>.jpg"></li>
+     <% end %>
+   </ul>
+</div>
 
-<br><br>
-<form action="/check_doubles" method="post">
-  <button type="submit" class="btn">Pair!</button>
-</form>
 <br><br>

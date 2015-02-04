@@ -10,6 +10,7 @@ header {
 }
 
 footer {
+  clear: both;
   height: auto;
   margin-top: 15px;
   padding-top: 15px;
@@ -33,6 +34,11 @@ ul {
   list-style: none;
   margin: 0 0 1em 0;
   padding: 0;
+}
+
+.cards li {
+  display: inline;
+  float: left;
 }
 
 .container {
@@ -85,6 +91,12 @@ keyframes oil_spill {
 .scared_fish {
   background-image: url("/img/scared_fish.jpg");
   height: 300px;
+}
+
+.cards img {
+  height: 200px;
+  width: 150px;
+  margin: 5px;
 }
 
 

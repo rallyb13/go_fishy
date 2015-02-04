@@ -4,6 +4,15 @@ Bundler.require(:default)
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
 get "/" do
+  Card.all().each() do |x|
+    x.destroy()
+  end
+  Player.all().each() do |x|
+    x.destroy()
+  end
+  Game.all().each() do |x|
+    x.destroy()
+  end
   erb(:index)
 end
 
@@ -72,14 +81,5 @@ end
 
 
 get "/reset" do
-  Card.all().each() do |x|
-    x.destroy()
-  end
-  Player.all().each() do |x|
-    x.destroy()
-  end
-  Game.all().each() do |x|
-    x.destroy()
-  end
   erb(:oil_spill)
 end
