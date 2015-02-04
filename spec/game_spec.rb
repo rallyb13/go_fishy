@@ -14,13 +14,13 @@ describe(Game) do
     end
   end
 
-  describe("#gameover?") do
+  describe("#gameover") do
     it("will check if the game is over") do
       game1 = Game.create()
       player1 = Player.create(name: "fisherman", score: 0)
       player2 = Player.create(name: "phisherman", score: 11)
       game1.start()
-      expect(game1.gameover?).to eq(true)
+      expect(game1.gameover).to eq(true)
     end
   end
 
