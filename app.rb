@@ -76,7 +76,7 @@ post "/go_fish" do
   player.get_card(1)
   @game = Game.first
   @game.update_turn
-  erb(:score)
+  erb :score
 end
 
 

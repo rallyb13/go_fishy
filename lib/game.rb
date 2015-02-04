@@ -5,7 +5,7 @@ class Game < ActiveRecord::Base
   def start
     @players = Player.all
     Card.add_cards
-    @total_points = Card.all.length / 2
+    @total_points = Card.all.length / 2 # not accessible from gameover method!
     @players.each do |player|
       player.get_card(5)
     end
@@ -17,7 +17,8 @@ class Game < ActiveRecord::Base
     Player.all.each do |player|
       total_score += player.score
     end
-    if total_score == @total_points
+    if total_score == 11
+binding.pry
       return true
     else
       return false
